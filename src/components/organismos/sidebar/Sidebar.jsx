@@ -21,7 +21,7 @@ import {
             <div className="imgcontent">
                 <img src={v.logo} />
             </div>
-            <h2>StockPRO</h2>
+            <h2>Inventario-UPG Salud</h2>
             </div>
             {LinksArray.map(({ icon, label, to }) => (
             <div

@@ -1,11 +1,11 @@
 import { useState } from 'react'
 
-import {AuthContextProvider} from "./index";
+import {AuthContextProvider, MenuHambur} from "./index";
 import {MyRoutes} from "./routers/routes"
 import styled, { ThemeProvider } from 'styled-components';
 import { createContext } from 'react';
 import { Device } from './styles/breakpoints';
-import { Light, Dark } from './index';
+import { Light, Dark, Sidebar } from './index';
 
 
 export const ThemeContext = createContext(null);
@@ -22,10 +22,10 @@ function App() {
         <AuthContextProvider>
           <Container className={sidebarOpen?"active":""}>
             <section className="ContentSidebar">
-              Sidebard
+              <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}></Sidebar>
             </section>
             <section className="ContentMenuambur">
-              Menu Ha
+              <MenuHambur></MenuHambur>
             </section>
             <section className='ContentRoutes'>
                 <MyRoutes></MyRoutes>
