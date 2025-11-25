@@ -1,5 +1,6 @@
 import { createContext,useContext,useEffect,useState } from "react";
-import {supabase} from "../index"
+import {supabase} from "../index";
+
 const AuthContext = createContext();
 
 export  const AuthContextProvider =({children})=>{
@@ -15,10 +16,10 @@ export  const AuthContextProvider =({children})=>{
 
                 }
             }
-          })
-          return ()=>{
+        })
+        return ()=>{
             authListener.subscription;
-          }
+        }
 
     },[])
     return (
