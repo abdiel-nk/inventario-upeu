@@ -1,7 +1,10 @@
 import styled from "styled-components";
+import { Btnsave } from "../moleculas/Btnsave";
 export function HomeTemplate(){
+    const {singOut} = userAuthStore();
     return (<Container>
         <h1>Home Template</h1>
+        <Btnsave titulo="Cerrar Sesión" bgcolor="#ffff" funcion={singOut}></Btnsave>
     </Container>)
 }
 const Container = styled.div`

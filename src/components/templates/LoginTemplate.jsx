@@ -8,7 +8,8 @@ export function LoginTemplate(){
   const navigate = useNavigate();
   const {insertarUsuarioAdmin} = useUsuariosStore();
   const mutationInsertUser= useMutation({
-    mutationKey:["insertar usuario admin"],mutationFn:async()=>{
+    mutationKey:["insertar usuario admin"],
+    mutationFn:async()=>{
       const p = {
         correo: "prueba@gmail.com",
         pass: "Abc123456#"
@@ -17,8 +18,8 @@ export function LoginTemplate(){
      if(dt){
         navigate("/")
      } 
-    }
-  })
+    },
+  });
 
   return (<Container>
     <Btnsave titulo="Crear cuenta" bgcolor="#ffff" funcion={mutationInsertUser.mutateAsync}/>
