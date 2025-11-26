@@ -123,8 +123,8 @@ export function ToggleTema() {
 }
 const Container = styled.div`
   .toggle {
-    width: 46px;
-    height: 46px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
     display: grid;
     place-items: center;

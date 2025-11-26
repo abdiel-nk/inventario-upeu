@@ -6,9 +6,11 @@ import styled, { ThemeProvider } from 'styled-components';
 import { createContext } from 'react';
 import { Device } from './styles/breakpoints';
 import { Light, Dark, Sidebar } from './index';
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 
 export const ThemeContext = createContext(null);
+
 function App() {
   const [themeuse, setTheme] = useState("dark");
   const theme= themeuse==="light"?"light":"dark"
@@ -20,7 +22,7 @@ function App() {
     <ThemeContext.Provider value={{theme, setTheme}}>
       <ThemeProvider theme={themeStyle}>
         <AuthContextProvider>
-          <Container className={sidebarOpen?"active":""}>
+          <Container className={sidebarOpen ? "active" : ""}>
             <section className="ContentSidebar">
               <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}></Sidebar>
             </section>
@@ -30,9 +32,8 @@ function App() {
             <section className='ContentRoutes'>
                 <MyRoutes></MyRoutes>
             </section>
-
-            
           </Container>
+        <ReactQueryDevtools initialIsOpen={false}></ReactQueryDevtools>
         </AuthContextProvider>
       </ThemeProvider>
     </ThemeContext.Provider>
