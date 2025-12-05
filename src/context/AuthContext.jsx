@@ -10,24 +10,24 @@ export  const AuthContextProvider =({children})=>{
             async (event,session)=>{
                 console.log(event, session)
                 if(session?.user==null){
-                    setUser(null)
+                    setUser(null);
                 }else{
-                    setUser(session?.user)
+                    setUser(session?.user);
 
                 }
             }
         );
         return ()=>{
             authListener.subscription;
-        }
+        };
 
-    },[])
+    },[]);
     return (
         <AuthContext.Provider value={{user}}>
             {children}
         </AuthContext.Provider>
-    )
-}
+    );
+};
 export const UserAuth =()=>{
     return useContext(AuthContext)
 }

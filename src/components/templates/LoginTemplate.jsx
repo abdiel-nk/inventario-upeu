@@ -11,24 +11,27 @@ export function LoginTemplate(){
     mutationKey:["insertar usuario admin"],
     mutationFn:async()=>{
       const p = {
-        correo: "prueba@gmail.com",
-        pass: "Abc123456#"
-      }
-     const dt= await insertarUsuarioAdmin(p)
-     if(dt){
-        navigate("/")
-     } 
+        correo: "test@gmail.com", 
+        pass: "Abc123@",
+      };
+      const dt = await insertarUsuarioAdmin(p)
+      if(dt){
+        navigate("/");
+      } 
     },
   });
 
-  return (<Container>
-    <Btnsave titulo="Crear cuenta" bgcolor="#ffff" funcion={mutationInsertUser.mutateAsync}/>
-
-  </Container>)  
+  return (
+  <Container>
+    <Btnsave titulo="Crear cuenta" bgcolor="#fff" funcion={mutationInsertUser.mutateAsync}/>
+  </Container>
+  )  
 }
 
 
 const Container = styled.div`
+margin-top: 50px;
+margin-left: 50px;
 height: 100vh;
 
 `

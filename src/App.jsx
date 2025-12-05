@@ -7,7 +7,7 @@ import { createContext } from 'react';
 import { Device } from './styles/breakpoints';
 import { Light, Dark, Sidebar } from './index';
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-
+import {} from "react-router-dom"
 
 export const ThemeContext = createContext(null);
 
@@ -33,13 +33,11 @@ function App() {
                 <MyRoutes></MyRoutes>
             </section>
           </Container>
-        <ReactQueryDevtools initialIsOpen={false}></ReactQueryDevtools>
+        <ReactQueryDevtools initialIsOpen={false}/>
         </AuthContextProvider>
       </ThemeProvider>
     </ThemeContext.Provider>
-      
     </>
-
   )
 }
 

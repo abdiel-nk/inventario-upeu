@@ -6,13 +6,14 @@ import { UserAuth } from "../context/AuthContext";
 
 export function MyRoutes(){
     const{user} = UserAuth()
+
     return(
     
         <Routes>
-            <Route path="/login" element={<Login />}/>
-            <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
+            <Route path="/" element={<Home />}/>
+            <Route element={<ProtectedRoute user={user} redirectTo="/home" />}>
 
-                <Route path="/" element={<Home />}/>
+                <Route path="/" element={<Home />} />
             </Route>
         </Routes>
     
