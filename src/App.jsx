@@ -7,8 +7,9 @@ import { createContext } from 'react';
 import { Device } from './styles/breakpoints';
 import { Light, Dark, Sidebar } from './index';
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import {} from "react-router-dom"
-
+// import {useLocation} from "react-router-dom"
+import { Login } from './pages/Login';
+import { useLocation } from 'react-router-dom';
 export const ThemeContext = createContext(null);
 
 function App() {
@@ -16,13 +17,14 @@ function App() {
   const theme= themeuse==="light"?"light":"dark"
   const themeStyle = theme==="light"?Light:Dark;
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
+  const {pathname} = useLocation();
   return (
     <>
     <ThemeContext.Provider value={{theme, setTheme}}>
       <ThemeProvider theme={themeStyle}>
         <AuthContextProvider>
-          <Container className={sidebarOpen ? "active" : ""}>
+          {
+            pathname!="/login"?(<Login/>):(<Container className={sidebarOpen ? "active" : ""}>
             <section className="ContentSidebar">
               <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}></Sidebar>
             </section>
@@ -32,7 +34,9 @@ function App() {
             <section className='ContentRoutes'>
                 <MyRoutes></MyRoutes>
             </section>
-          </Container>
+          </Container>)
+          }
+          
         <ReactQueryDevtools initialIsOpen={false}/>
         </AuthContextProvider>
       </ThemeProvider>

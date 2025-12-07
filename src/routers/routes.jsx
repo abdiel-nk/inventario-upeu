@@ -10,9 +10,8 @@ export function MyRoutes(){
     return(
     
         <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route element={<ProtectedRoute user={user} redirectTo="/home" />}>
-
+            <Route path="/login" element={<Login />} />
+            <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
                 <Route path="/" element={<Home />} />
             </Route>
         </Routes>

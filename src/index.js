@@ -16,3 +16,7 @@ export * from './styles/variables';
 export * from './supabase/supabase.config';
 export * from './utils/dataEstatica';
 export * from './components/organismos/Menuhambur';
+export * from "./components/organismos/formularios/InputText";
+export * from "./components/organismos/sidebar/FooterLogin";
+export * from "./store/AuthStore";
+export * from "./store/UsuariosStore";
