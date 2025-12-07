@@ -20,3 +20,6 @@ export * from "./components/organismos/formularios/InputText";
 export * from "./components/organismos/sidebar/FooterLogin";
 export * from "./store/AuthStore";
 export * from "./store/UsuariosStore";
+export * from "./components/moleculas/BtnCircular";
+export * from "./components/organismos/Header";
+export * from "./components/organismos/ListaMenuDesplegable";
