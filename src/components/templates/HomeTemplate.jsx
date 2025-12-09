@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { Header} from "../organismos/Header";
 // import {useAuthStore} from "../../store/AuthStore"
 import { useState } from "react";
+import { Title } from "../atomos/Tittle";
+import { BannerEmpresa } from "../organismos/BannerEmpresa";
 export function HomeTemplate(){
     const [state, setState] = useState(false);
     // const {singOut} = useAuthStore();
@@ -13,12 +15,13 @@ export function HomeTemplate(){
             />
         </header>
         <section className="area1">
-
+            <Title>Tu empresa Mirkala</Title>
         </section>
         <section className="area2">
 
         </section>
         <section className="main">
+            <BannerEmpresa></BannerEmpresa>
 
         </section>
     </Container>)
@@ -47,6 +50,7 @@ const Container = styled.div`
         background-color: rgba(229,67,26,0.14);
         display: flex;
         align-items: center;
+        justify-content: end;
     }
     .area2{
         grid-area: area2;
