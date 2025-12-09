@@ -46,6 +46,7 @@ const Container = styled.div`
         line-height: 1.25;
         font-weight: 700;
         justify-content:center;
+        
         img{
             width: 50px;
         }
