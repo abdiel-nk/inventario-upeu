@@ -9,8 +9,8 @@ export const useEmpresaStore = create((set, get)=>({
     
     mostrarEmpresa: async(p)=>{
         const response = await MostrarEmpresa(p);
-        set({idusuario:response});
-        return response;
+        set({dataempresa:response.empresa});
+        return response.empresa;
 
-    }
+    },
 }));

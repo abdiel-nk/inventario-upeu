@@ -23,3 +23,5 @@ export * from "./store/UsuariosStore";
 export * from "./components/moleculas/BtnCircular";
 export * from "./components/organismos/Header";
 export * from "./components/organismos/ListaMenuDesplegable";
+export * from "./store/EmpresaStore";
+export * from './supabase/crudEmpresa';

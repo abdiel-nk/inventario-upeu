@@ -21,8 +21,7 @@ export function MyRoutes(){
 
     });
 
-    const {data: dataempresa}=useQuery({queryKey:["mostrar empresa"],queryFn:()=>mostrarEmpresa(
-        {idusuario:idusuario}), enabled:!!datausuarios})
+     const {data:dataempresa}=useQuery({queryKey:["mostrar empresa"],queryFn:()=>mostrarEmpresa({idusaurio:idusuario}),enabled:!!datausuarios})
 
     if(isLoading){
         return <SpinnerLoader/>

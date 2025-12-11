@@ -13,4 +13,4 @@ export const MostrarEmpresa = async(p)=>{
     if(data){
         return data;
     }
-}
+};
