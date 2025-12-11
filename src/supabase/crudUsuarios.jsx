@@ -1,4 +1,5 @@
-import { supabase } from "./supabase.config"
+import { supabase } from "./supabase.config";
+import {ObtenerIdAuthSupabase} from "../supabase/globalSupabase";
 import Swal from "sweetalert2";
 
 export const InsertarUsuarios = async(p)=>{
@@ -11,4 +12,16 @@ export const InsertarUsuarios = async(p)=>{
         });
     }
     if(data) return data;
+}
+
+export const MostrarUsuarios = async()=>{
+    const idAuthSupabase =await ObtenerIdAuthSupabase();
+    const {error,data} = await supabase
+    .from("usuarios")
+    .select()
+    .eq("idauth",idAuthSupabase)
+    .maybeSingle();
+    if(data){
+        return data;
+    }
 }

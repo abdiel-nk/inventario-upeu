@@ -25,7 +25,9 @@ function App() {
           {
             pathname =="/login"?(<Login/>):(<Container className={sidebarOpen ? "active" : ""}>
             <section className="ContentSidebar">
-              <Sidebar state={sidebarOpen} setState={()=>setSidebarOpen(!sidebarOpen)}></Sidebar>
+              <Sidebar 
+              state={sidebarOpen} 
+              setState={()=>setSidebarOpen(!sidebarOpen)}></Sidebar>
             </section>
             <section className="ContentMenuambur">
               <MenuHambur></MenuHambur>
