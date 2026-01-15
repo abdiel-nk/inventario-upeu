@@ -8,20 +8,21 @@ import { useUsuariosStore, } from "../store/UsuariosStore";
 import { SpinnerLoader } from "../components/moleculas/SpinnerLoader";
 import { ErrorMolecula} from "../components/moleculas/ErrorMolecula";
 import { useEmpresaStore } from "../store/EmpresaStore";
+import { Configuracion } from "../pages/Configuracion";
+import { Marca } from "../pages/Marca";
 
 
 export function MyRoutes(){
     
-    const{user} = UserAuth();
-    const{mostrarUsuarios, idusuario} = useUsuariosStore();
-    const {mostrarEmpresa} = useEmpresaStore();
-    const {data:datausuarios, isLoading, error} =useQuery({
-        queryKey:["mostrar usuarios"],
+    const { user } = UserAuth();
+    const { mostrarUsuarios,idusuario } = useUsuariosStore();
+    const {mostrarEmpresa} = useEmpresaStore()
+    const { data:datausuarios, isLoading, error } = useQuery({
+        queryKey: ["mostrar usuarios"],
         queryFn: mostrarUsuarios,
-
     });
-
-     const {data:dataempresa}=useQuery({queryKey:["mostrar empresa"],queryFn:()=>mostrarEmpresa({idusaurio:idusuario}),enabled:!!datausuarios})
+    
+    const {data:dataempresa}=useQuery({queryKey:["mostrar empresa"],queryFn:()=>mostrarEmpresa({idusaurio:idusuario}),enabled: !!datausuarios!=null})
 
     if(isLoading){
         return <SpinnerLoader/>
@@ -35,7 +36,10 @@ export function MyRoutes(){
             <Route path="/login" element={<Login />} />
             <Route element={<ProtectedRoute user={user} redirectTo="/login" />}>
                 <Route path="/" element={<Home />} />
-            </Route>
+                <Route path="/configurar" element={<Configuracion />} />
+                <Route path="/configurar/marca" element={<Marca />} />
+            </Route>                
+
         </Routes>
     
     );

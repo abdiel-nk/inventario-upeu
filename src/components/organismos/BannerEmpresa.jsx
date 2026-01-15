@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import {v} from "../../styles/variables";
 import { CardDatosEmpresa } from "../moleculas/CardDatosEmpresa";
+import { useEmpresaStore } from "../../store/EmpresaStore";
 export function BannerEmpresa(){
+  const { dataempresa} = useEmpresaStore();
     return <Container>
         <div className="content-wrapper-context">
             <span className="titulo">
@@ -10,6 +12,7 @@ export function BannerEmpresa(){
             </span>
             <div className="content-text">
                 Stock UPG Salud - Sede Washington
+                {dataempresa.nombre}
             </div>
             <ContentCards>
                 <CardDatosEmpresa titulo="Moneda" valor="S/. "/>
