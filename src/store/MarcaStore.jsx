@@ -19,6 +19,7 @@ export const useMarcaStore = create((set, get) => ({
     set({ parametros: p });
     set({ datamarca: response });
     set({ marcaItemSelect: response[0] });
+    console.log("Respuesta de marca", response);
     return response;
   },
   selectMarca: (p) => {

@@ -1,19 +1,22 @@
 import { 
-   
+    useReactTable,
+
     flexRender,
-  getCoreRowModel,
-  getFilteredRowModel,
-  getPaginationRowModel,
-  getSortedRowModel,
-  useReactTable,
- } from "@tanstack/react-table";
+    getCoreRowModel,
+    getFilteredRowModel,
+    getPaginationRowModel,
+    getSortedRowModel,
+} from "@tanstack/react-table";
+
+
+
 import styled from "styled-components";
 export function TablaMarca({data}){
 
     const columns= [
         {
         accesorKey:"descripcion",
-        header:"Descripcion",
+        header:"Descripción",
         cell:(info)=><span>{info.getValue()}</span>
 
         }
@@ -44,12 +47,9 @@ export function TablaMarca({data}){
                         </tr>
                     ))
                 }
-                <tr>
-                    <th></th>
-                </tr>
             </thead>
             <tbody>
-               {table.getRowModel().rows.map((item )=>{
+                {table.getRowModel().rows.map((item )=>{
                 <tr key={item.id}>
                     {
                         item.getVisibleCells.map((cell)=>{
@@ -61,7 +61,7 @@ export function TablaMarca({data}){
                         })
                     }
                 </tr>
-               })}
+                })}
             </tbody>
         </table>
     </Container>
