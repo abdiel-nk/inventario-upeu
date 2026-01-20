@@ -11,14 +11,20 @@ import {
 
 
 import styled from "styled-components";
+import { ContentAccionesTabla } from "../ContentAccionesTabla";
 export function TablaMarca({data}){
 
     const columns= [
         {
-        accesorKey:"descripcion",
-        header:"Descripción",
+        accessorKey: "descripcion",
+        header:'Descripcion',
         cell:(info)=><span>{info.getValue()}</span>
 
+        },
+        {
+        accesorKey:"acciones"  ,
+        header: "Acciones",
+        cell:()=>( <ContentAccionesTabla></ContentAccionesTabla>)
         }
     ];
     const table = useReactTable({
@@ -36,12 +42,11 @@ export function TablaMarca({data}){
     <Container>
         <table>
             <thead>
-                {
-                    table.getHeaderGroups().map((headerGroup)=>(
+                {table.getHeaderGroups().map((headerGroup)=>(
                         <tr key={headerGroup.id}>
                             {headerGroup.headers.map((header)=>(
                                 <th key={header.id}>
-                                    {header.column.columnDef.header}
+                                    {flexRender(header.column.columnDef.header, header.getContext())}
                                 </th>
                             ))}
                         </tr>
@@ -49,19 +54,16 @@ export function TablaMarca({data}){
                 }
             </thead>
             <tbody>
-                {table.getRowModel().rows.map((item )=>{
+                {table.getRowModel().rows.map((item )=>(
                 <tr key={item.id}>
                     {
-                        item.getVisibleCells.map((cell)=>{
+                        item.getVisibleCells().map((cell)=>(
                             <td key={cell.id}>
-                                {
-                                flexRender(cell.column.columnDef.cell, cell.getContext())
-                                }
+                                {flexRender(cell.column.columnDef.cell, cell.getContext())}
                             </td>
-                        })
-                    }
+                        ))}
                 </tr>
-                })}
+                ))}
             </tbody>
         </table>
     </Container>

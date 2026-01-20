@@ -15,11 +15,13 @@ export const useMarcaStore = create((set, get) => ({
   marcaItemSelect: [],
   parametros: {},
   mostrarMarca: async (p) => {
+    console.log("parametros enviados",p);
     const response = await MostrarMarca(p);
+    console.log("respuesta api",response);
+
     set({ parametros: p });
     set({ datamarca: response });
     set({ marcaItemSelect: response[0] });
-    console.log("Respuesta de marca", response);
     return response;
   },
   selectMarca: (p) => {

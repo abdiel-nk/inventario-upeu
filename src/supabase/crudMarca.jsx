@@ -14,14 +14,18 @@ export async function InsertarMarca(p) {
 
 export async function MostrarMarca(p) {
  
-    const { data } = await supabase
+    const { data , error} = await supabase
       .from("marca")
-      .select()
+      .select("*")
       .eq("id_empresa", p.id_empresa)
       .order("id", { ascending: true });
+      if(error){
+        console.log("Error Supabase", error);
+        return [];
+      }
     return data;
   
-}
+};
 export async function EliminarMarca(p) {
  
     const { error } = await supabase
