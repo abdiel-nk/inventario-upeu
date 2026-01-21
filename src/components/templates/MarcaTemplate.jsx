@@ -2,10 +2,27 @@ import styled from "styled-components";
 import { Header} from "../organismos/Header";
 import { useState } from "react";
 import { TablaMarca } from "../organismos/tablas/tablaMarca";
-
+import {RegistrarMarca } from "../../components/organismos/formularios/RegistrarMarca"
+import { Btnfiltro } from "../moleculas/BtnFiltro";
+import { ContentFiltro} from "../atomos/ContentFiltro";
+import { Title } from "../atomos/Tittle";
+import {v} from "../../styles/variables"
 export function MarcaTemplate({data}){
     const [state, setState] = useState(false);
+    const [ dataSelect, setdataSelect] =useState([]);
+    const[accion, setAccion] = useState("");
+    const [openRegistro, SetopenRegistro] =useState(false);
+    const nuevoRegistro=()=>{
+        SetopenRegistro(!openRegistro);
+        setAccion("Nuevo");
+        setdataSelect([])
+    }
     return (<Container>
+
+        {
+            openRegistro && <RegistrarMarca dataSelect={dataSelect} accion={accion} onClose={()=>SetopenRegistro(!openRegistro)}/>
+        }
+        
         <header className="header">
             <Header
                 stateConfig={{state: state,setState: ()=> setState(!state)}}
@@ -13,6 +30,17 @@ export function MarcaTemplate({data}){
         </header>
 
         <section className="area1">
+            <ContentFiltro>
+                <Title>
+                    Marcas
+                </Title>
+                <Btnfiltro 
+                bgcolor="#6f0909" 
+                textcolor="#1c1c1c"
+                icono={<v.agregar/>}
+                funcion={nuevoRegistro}
+                />
+            </ContentFiltro>
         </section>
         <section className="area2">
         </section>
@@ -58,6 +86,5 @@ const Container = styled.div`
         display: flex;
         align-items: start;
     }
-
 
 `
