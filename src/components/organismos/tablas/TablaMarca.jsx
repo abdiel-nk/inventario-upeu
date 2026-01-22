@@ -16,7 +16,7 @@ import styled from "styled-components";
 import { ContentAccionesTabla } from "../ContentAccionesTabla";
 import {useMarcaStore} from "../../../store/MarcaStore";
 import {v} from "../../../styles/variables";
-export function TablaMarca({data, SetopenRegistro, setdataSelect, setAccion }){
+export function TablaMarca({data, SetopenRegistro, setdataSelect, setAccion,  }){
     
     const {eliminarMarca} = useMarcaStore()
     
@@ -141,7 +141,7 @@ const Container = styled.div`
   }
   @media (min-width: ${v.bphomer}) {
     margin: 2em auto;
-   
+
   }
   .responsive-table {
     width: 100%;

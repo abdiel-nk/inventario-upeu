@@ -4,6 +4,7 @@ import { v } from "../../../styles/variables";
 import { InputText, Btnsave, useMarcaStore } from "../../../index";
 import { useForm } from "react-hook-form";
 import { useEmpresaStore } from "../../../store/EmpresaStore";
+import { ConvertirCapitalize } from "../../../utils/Conversiones";
 export function RegistrarMarca({ onClose, dataSelect, accion }) {
   const { insertarMarca, editarMarca } = useMarcaStore();
   const { dataempresa } = useEmpresaStore();
@@ -16,13 +17,13 @@ export function RegistrarMarca({ onClose, dataSelect, accion }) {
     if (accion === "Editar") {
       const p = {
         id: dataSelect.id,
-        descripcion: data.nombre,
+        descripcion:ConvertirCapitalize(data.nombre),
       };
       await editarMarca(p);
       onClose();
     } else {
       const p = {
-        _descripcion: data.nombre,
+        _descripcion:ConvertirCapitalize(data.nombre),
         _idempresa: dataempresa.id,
       };
       await insertarMarca(p);

@@ -49,13 +49,13 @@ export function MarcaTemplate({data}){
             <Buscador setBuscador={setBuscador}/>
         </section>
         <section className="main">
-            <TablaMarca data={data} SetopenRegistro={SetopenRegistro} setdataSelect={setdataSelect} setAccion={setAccion}/>
+            <TablaMarca data={data} SetopenRegistro={SetopenRegistro} setdataSelect={setdataSelect} setAccion={setAccion} />
         </section>
     </Container>)
 }
 const Container = styled.div`
     
-    height: 100vh;
+    height: 100%;
     width:100%;
     background-color: ${({theme})=>theme.bgtotal};
     color: ${({theme})=>theme.text};
@@ -87,9 +87,11 @@ const Container = styled.div`
     }
     .main{
         grid-area: main;
-        background-color: rgba(179, 46, 241, 0.14);
+        // background-color: rgba(174, 0, 255, 0.14);
         display: flex;
         align-items: start;
+        height:100%;
+        
     }
 
 `
