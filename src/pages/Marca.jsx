@@ -5,25 +5,28 @@ import {
   useEmpresaStore,
   useMarcaStore,
 } from "../index";
-
+import { useDebounce } from "../hooks/Dobounce";
 export function Marca() {
   const { mostrarMarca, datamarca, buscarMarca, buscador } = useMarcaStore();
+  const debounceBuscador = useDebounce(buscador, 300);
   const { dataempresa } = useEmpresaStore();
-
   const { isLoading, error } = useQuery({
     queryKey: ["mostrar marca", { id_empresa: dataempresa?.id }],
     queryFn: () => mostrarMarca({ id_empresa: dataempresa?.id }),
     enabled: dataempresa?.id != null,
   });
-  
+  //problemas con la marca
   const { data: buscardata } = useQuery({
     queryKey: [
       "buscar marca",
-      { id_empresa: dataempresa?.id, descripcion: buscador },
+      { id_empresa: dataempresa.id, descripcion: debounceBuscador },
     ],
     queryFn: () =>
-      buscarMarca({ id_empresa: dataempresa?.id, descripcion: buscador }),
-    enabled: dataempresa.id != null,
+      buscarMarca({
+        id_empresa: dataempresa.id,
+        descripcion: debounceBuscador 
+      }),
+    enabled: !!dataempresa?.id && !!debounceBuscador?.trim(),
   });
 
   if (isLoading) {
@@ -32,6 +35,6 @@ export function Marca() {
   if (error) {
     return error.message;
   }
-
-  return <MarcaTemplate data={datamarca}/>;
+  const marcaMostrar = debounceBuscador?.trim()? buscardata ?? [] : datamarca;
+  return <MarcaTemplate data={marcaMostrar}/>;
 }

@@ -16,29 +16,29 @@ import styled from "styled-components";
 import { ContentAccionesTabla } from "../ContentAccionesTabla";
 import {useMarcaStore} from "../../../store/MarcaStore";
 import {v} from "../../../styles/variables";
-export function TablaMarca({data}){
+export function TablaMarca({data, SetopenRegistro, setdataSelect, setAccion }){
     
     const {eliminarMarca} = useMarcaStore()
     
-    const editar= ()=>{
-    // if (data.descripcion === "Generica") {
-    //     Swal.fire({
-    //         icon: "error",
-    //         title: "Oops...",
-    //         text: "Esta registro no se permite modificar ya que es valor por defecto.",
-    //     });
-    //     return;
-    // }
-    // SetopenRegistro(true);
-    // setdataSelect(data);
-    // setAccion("Editar");
-    }
+    const editar= (data)=>{
+      console.log("data editar",data);
+      if(data.descripcion === "Generica"){
+        Swal.fire({
+          icon:"error",
+          title: "Opps",
+          text: "Este registro no se permite eliminar ya que es un valor por defecto",
+          
+        });
+        return;
+      }
+      SetopenRegistro(true);
+      setdataSelect(data);
+      setAccion("Editar");
+      console.log(setAccion)
+    };
 
     const eliminar = (p) => {
-    //verificar pametro recibido
-        // if (!p) {
-        // console.log("Fila no recibida", p);
-        // return;
+
         
     console.log("clic eliminar", p)
     if (p.descripcion === "Generica") {

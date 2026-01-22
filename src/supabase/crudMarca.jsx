@@ -13,7 +13,7 @@ export async function InsertarMarca(p) {
 }
 
 export async function MostrarMarca(p) {
- 
+
     const { data , error} = await supabase
       .from("marca")
       .select("*")
@@ -48,10 +48,13 @@ export async function EditarMarca(p) {
 
 }
 export async function BuscarMarca(p) {
-    const { data} = await supabase
+    const { data, error } = await supabase
     .from("marca")
-    .select("descripcion")
+    .select()
     .eq("id_empresa", p.id_empresa)
-    .ilike("descripcion","%"+descripcion+"%")
+    .ilike("descripcion",`%${p.descripcion}%`);
+    if(error){
+      console.log("Error buscar Marca", error);
+    }
     return data;
 }
